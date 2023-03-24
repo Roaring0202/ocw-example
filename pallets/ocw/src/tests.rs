@@ -113,7 +113,7 @@ parameter_types! {
 
 impl Config for Test {
 	type RuntimeEvent = RuntimeEvent;
-	type AuthorityId = crypto::TestAuthId;
+	type AuthorityId = crypto::OcwAuthId;
 	type GracePeriod = ConstU64<5>;
 	type UnsignedInterval = ConstU64<128>;
 	type UnsignedPriority = UnsignedPriority;
@@ -275,7 +275,7 @@ fn should_submit_unsigned_transaction_on_chain_for_any_account() {
 				<PricePayload<
 					<Test as SigningTypes>::Public,
 					<Test as frame_system::Config>::BlockNumber,
-				> as SignedPayload<Test>>::verify::<crypto::TestAuthId>(&price_payload, signature);
+				> as SignedPayload<Test>>::verify::<crypto::OcwAuthId>(&price_payload, signature);
 
 			assert!(signature_valid);
 		}
@@ -329,7 +329,7 @@ fn should_submit_unsigned_transaction_on_chain_for_all_accounts() {
 				<PricePayload<
 					<Test as SigningTypes>::Public,
 					<Test as frame_system::Config>::BlockNumber,
-				> as SignedPayload<Test>>::verify::<crypto::TestAuthId>(&price_payload, signature);
+				> as SignedPayload<Test>>::verify::<crypto::OcwAuthId>(&price_payload, signature);
 
 			assert!(signature_valid);
 		}
